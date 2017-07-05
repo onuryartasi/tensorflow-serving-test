@@ -1,0 +1,17 @@
+version: '2'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  tensorflow-serving:
+    container_name: tensorflow-serving
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "9000:9000"
+      - "8915:8915"
+    networks:
+      - app-tier
