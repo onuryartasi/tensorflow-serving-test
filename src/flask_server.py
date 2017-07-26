@@ -37,8 +37,6 @@ def model_prediction():
     result = stub.Predict(request, 10.0)  # 10 secs timeout
     print(result)
 
-
-
     return result
 
 
