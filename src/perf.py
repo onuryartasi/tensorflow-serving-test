@@ -15,6 +15,8 @@ def create_request():
     image_data.append(urllib.urlopen("https://cammyeu.blob.core.windows.net/2017-07-13/3e961e944d7c9631f64648f3f639e06924c191edG.jpg").read())
     image_data.append(urllib.urlopen("https://cammyau.blob.core.windows.net/2017-07-13/24df8d25d4e1282bc45590c919586882dae2c24fE.jpg").read())
     image_data.append(urllib.urlopen("https://cammyeu.blob.core.windows.net/2017-07-13/323245bab1d12e47f616f48b39548c8ec20295bbG.jpg").read())
+    image_data.append(urllib.urlopen("https://cammyus.blob.core.windows.net/2017-07-27/6bd2d1e93c4d81f247b11d3b97e73774f8c3ae7dF.jpg").read())
+    image_data.append(urllib.urlopen("https://cammyus.blob.core.windows.net/2017-07-27/72107e8b981151bf806cdf7b35837403bbb592e1F.jpg").read())
 
     print('Make prediction request')
     request = predict_pb2.PredictRequest()
