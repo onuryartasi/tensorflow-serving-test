@@ -95,7 +95,7 @@ num_batch_threads { value: 8 }
 ```
 
 1. `max_batch_size`: the maximum size of any batch. This parameter governs the throughput/latency tradeoff, and also avoids having batches that are so large they exceed some resource constraint (e.g. GPU memory to hold a batch's data).
-2. `batch_timeout_micros`: the maximum amount of time to wait before executing a batch (even if it hasn't reached max_batch_size). Used to rein in tail latency. 
+2. `batch_timeout_micros`: the maximum amount of time to wait before executing a batch (even if it hasn't reached `max_batch_size`). Used to rein in tail latency. 
 3. `num_batch_threads`: the degree of parallelism, *i.e.,* the maximum number of batches processed concurrently.
 4. `max_enqueued_batches`: the number of batches worth of tasks that can be enqueued to the scheduler. Used to bound queueing delay, by turning away requests that would take a long time to get to, rather than building up a large backlog.
 
