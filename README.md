@@ -16,6 +16,10 @@ docker build .
 ```
 docker run --rm -it -v ${PWD}:/app <image-id> /bin/bash
 ```
+If your machine has a GPU, the GPU can be accessed via [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker), so run
+```
+nvidia-docker run --rm -it -v ${PWD}:/app <image-id> /bin/bash
+```
 5. Start the server by running it in the background
 ```
 ./scripts/serve.sh &
