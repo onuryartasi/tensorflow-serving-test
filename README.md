@@ -7,7 +7,7 @@ This repository contains a simple Python-based client to TensorFlow Serving and 
 ## How to Run
 
 1. Download the example model `resnet50-ir-256x256-augmented-iter32-batch12.zip` from the staging account in `ii-ava-dev/classification-tensorflow`
-2. Place the model in the directory `data/resnet-model-data/1/`; this will place the model in version 1.
+2. Place the model in the directory `data/resnet-model-data/1/`; this will place set the model as version 1.
 3. Build a Docker container
 ```
 docker build .
@@ -70,6 +70,10 @@ outputs {
 }
 ```
 
+
+## New Models
+
+For any model, if there is a new version, place them in a folder denoted by an *integer*. The manager in TensorFlow Serving will load the model from the folder labeled with the largest integer. Note that the whole model needs to be loaded in its entirely as the manager's polling rate is very high, so it will try to load a partially downloaded file as soon as a new directory appears.
 
 ## Server Settings
 
