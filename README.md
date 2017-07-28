@@ -81,7 +81,9 @@ outputs {
 
 ## New Models
 
-For any model, if there is a new version, place them in a folder denoted by an *integer*. The manager in TensorFlow Serving will load the model from the folder labeled with the largest integer. Note that the whole model needs to be loaded in its entirely as the manager's polling rate is very high, so it will try to load a partially downloaded file as soon as a new directory appears.
+For any model, if there is a new version, place them in a folder denoted by an *integer*. For example, if there is a new version of the model `resnet-model-data` above, place the new definition and weights in the path `data/resnet-model-data/2/`.
+
+The manager in TensorFlow Serving will load the model from the folder labeled with the largest integer. Note that the whole model needs to be loaded in its entirely as the manager's polling rate is very high, so it will try to load a partially downloaded file as soon as a new directory appears.
 
 ## Server Settings
 
