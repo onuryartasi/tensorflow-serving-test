@@ -6,17 +6,21 @@ This repository contains a simple Python-based client to TensorFlow Serving and 
 
 ## How to Run
 
-1. Download the example model `resnet50-ir-256x256-augmented-iter32-batch12.zip` from the staging account in `ii-ava-dev/classification-tensorflow`
+1. Download the example model `resnet50-ir-256x256-augmented-iter32-batch12.zip` from the staging account in `ii-ava-dev/classification-tensorflow`. This is an IR model used in production.
 2. Place the model in the directory `data/resnet-model-data/1/`; this will place set the model as version 1.
 3. Build a Docker container
 ```
 docker build .
 ```
+To get a container with GPU support, run this instead
+```
+docker build -f Dockerfile.gpu .
+```
 4. Run the Docker container 
 ```
 docker run --rm -it -v ${PWD}:/app <image-id> /bin/bash
 ```
-If your machine has a GPU, the GPU can be accessed via [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker), so run
+If your machine has a GPU, the GPU can be accessed via [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker), so instead, run
 ```
 nvidia-docker run --rm -it -v ${PWD}:/app <image-id> /bin/bash
 ```
