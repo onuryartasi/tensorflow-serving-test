@@ -92,11 +92,22 @@ In `scripts/server.sh`, there is a shell script that specifies the configuration
 /serving/bazel-bin/tensorflow_serving/model_servers/tensorflow_model_server --port=9000 --model_name="resnet" --model_base_path=/app/data/resnet-model-data --enable_batching --batching_parameters_file=config/batching_config.txt
 ```
 
-1. `--port=`: specify the port for the server.
-2. `--model_name=`: set your model name.
-3. `--model_base_path`: where to find your model's definition and weights.
-4. `--enable_batching`: allow batching.
-5. `--batching_parameters_file=`: get the configuration file for batching.
+The following is the full list of flags:
+
+1. `port`: port to listen on.
+2. `enable_batching`: enable batching.
+3. `batching_parameters_file`: If non-empty, read an ascii BatchingParameters protobuf from the supplied file name and use the contained values instead of the defaults.
+4. `model_config_file`: If non-empty, read an ascii ModelServerConfig protobuf from the supplied file name, and serve the models in that file. (If used, `--model_name`, `--model_base_path` and `--model_version_policy` are ignored.)
+5. `model_name`: name of model (ignored if `--model_config_file` flag is set).
+6. `model_base_path`: path to export (ignored if --model_config_file flag is set, otherwise required).
+7. `model_version_policy`: The version policy which determines the number of model versions to be served at the same time. The default value is LATEST_VERSION, which will serve only the latest version. (Ignored if `--model_config_file` flag is set). The list of version policies are:
+  * `Latest`: serves the latest model version found on disk,
+  * `All`: serves all models found on disk, and
+  * `Specific`: serves a specific model version found on disk.
+8. `file_system_poll_wait_seconds`: interval in seconds between each poll of the file system for new model version.
+9. `use_saved_model`: interval in seconds between each poll of the file system for new model version.
+10. `tensorflow_session_parallelism`: number of threads to use for running a Tensorflow session. Auto-configured by default. Note that this option is ignored if `--platform_config_file` is non-empty.
+11. `platform_config_file`: if non-empty, read an ascii PlatformConfigMap protobuf from the supplied file name, and use that platform config instead of the Tensorflow platform. (If used, `--enable_batching` and `--use_saved_model`are ignored.)
 
 ## Batching Configuration
 
